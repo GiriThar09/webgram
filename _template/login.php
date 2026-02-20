@@ -1,5 +1,14 @@
+<?php
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$result =validate_user($username,$password);
+if($result)
+    
+?>
+
 <main class="form-signin w-100 m-auto">
-      <form>
+      <form method="post" action="index.php">
         <img
           class="mb-4"
           src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
