@@ -1,9 +1,5 @@
 <?php
-$username = $_POST['username'];
-$password = $_POST['password'];
 
-$result =validate_user($username,$password);
-if($result)
     
 ?>
 

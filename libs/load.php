@@ -8,9 +8,10 @@ function load_template($name)
 <?php
 function validate_user($username,$password)
     {
-        print("Login successful");
+        
         if($username=="girithar@gmail.com" and $password=="12345678")
             {
+                print("login successsfull");
                 return true;
             }
         else
