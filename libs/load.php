@@ -9,7 +9,7 @@ function load_template($name)
 function validate_user($username,$password)
     {
         
-        if($username=="girithar@gmail.com" and $password=="12345678")
+        if($username=="girithar@gmail.com" and $password=="password")
             {
                 print("login successsfull");
                 return true;

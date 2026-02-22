@@ -1,33 +1,9 @@
-<?php 
- include 'libs/load.php';
-
- $username = $_POST['username'];
-$password = $_POST['password'];
-
-$result =validate_user($username,$password);
-if($result)
-
+<?php
+include 'libs/load.php';
 ?>
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Astro v5.13.2" />
-    <title>Sign-in</title>
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/5.3/examples/sign-in/"
-    />
-    <script src="/app/assets/js/color-modes.js"></script>
-    <link href="/app/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <meta name="theme-color" content="#712cf9" />
-    <link href="sign-in.css" rel="stylesheet" />
+<?
+load_template('head.php');
+?>
     <style>
          html,
 body {
@@ -226,7 +202,7 @@ body {
       </ul>
     </div>
     <?php
-    load_template('login.php')
+    load_template('_login.php')
     ?>
     <script
       src="/app/assets/dist/js/bootstrap.bundle.min.js"
