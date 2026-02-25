@@ -1,6 +1,43 @@
+<?php
 
+$signup = false;
+if (isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email_address']) and isset($_POST['phone'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email_address'];
+    $phone = $_POST['phone'];
+    $error = signup($username, $password, $email, $phone);
+    $signup = true;
+}
+?>
+
+<?php
+    if ($signup) {
+        if (!$error) {
+            ?>
+<main class="container">
+    <div class="bg-light p-5 rounded mt-3">
+        <h1>Signup Success</h1>
+        <p class="lead">Now you can login from <a href="/login.php">here</a>.</p>
+
+    </div>
+</main>
+<?php
+        } else {
+            ?>
+<main class="container">
+    <div class="bg-light p-5 rounded mt-3">
+        <h1>Signup Fail</h1>
+        <p class="lead">Something went wrong, <?=$error?>
+        </p>
+    </div>
+</main>
+<?php
+        }
+    } else {
+        ?>
 <main class="form-signup">
-      <form method="post" action="test.php">
+      <form method="post" action="signup.php">
         <img
           class="mb-4"
           src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -36,7 +73,7 @@
             type="text"
             class="form-control"
             id="floatingusername"
-            name="user_name"
+            name="username"
             placeholder="User Name"
           />
           <label for="floatingusername">User Name</label>
@@ -63,7 +100,10 @@
           </label>
         </div>
         <button class="btn btn-primary w-100 py-2" type="submit">
-          Sign in
+          Sign up
         </button>
       </form>
 </main> 
+<?php
+}
+?>
