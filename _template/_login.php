@@ -23,12 +23,12 @@ else {
       <form method="post" action="/app/login.php">
         <img
           class="mb-4"
-          src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+          src="https://stock.adobe.com/search?k=wb+logo&asset_id=432659644"
           alt=""
           width="72"
           height="70"
         />
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal">log in </h1>
         <div class="form-floating">
           <input
             type="email"

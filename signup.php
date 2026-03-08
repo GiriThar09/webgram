@@ -7,7 +7,7 @@ load_template('head.php');
 ?>
 
   </head>
-  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+  <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path
