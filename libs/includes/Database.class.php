@@ -18,7 +18,7 @@ class Database
             }
             else
             {
-                printf("connection successfull");
+                // printf("connection successfull");
                 Database::$conn = $connection;
                 return Database::$conn;
             }
