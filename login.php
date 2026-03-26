@@ -1,5 +1,9 @@
 <?php
 include 'libs/load.php';
+if (isset($_GET['logout'])) {
+    Session::destroy();
+    die("Session destroyed, <a href='login.php'>Login Again</a>");
+}
 ?>
 <?
 load_template('head.php');

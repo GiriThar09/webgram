@@ -1,7 +1,7 @@
 <?php
 include 'libs/load.php';
 
-$user = "priya";
+$user = "navya";
 $pass = "giri";
 $result = null;
 
@@ -11,20 +11,27 @@ if (isset($_GET['logout'])) {
 }
 
 if (Session::get('is_loggedin')) {
-    $userdata = Session::get('session_user');
-    print("Welcome Back, $userdata[username]");
-    $result = $userdata;
+    $username = Session::get('session_username');
+    $userobj = new User($username);
+    print("Welcome Back ".$userobj->getFirstname());
+    print("<br>".$userobj->getBio());
+    $userobj->setBio("Making new things...");
+    print("<br>".$userobj->getBio());
 } else {
     printf("No session found, trying to login now. <br>");
     $result = User::login($user, $pass);
+    
     if ($result) {
-        echo "Login Success, $result[username]";
+        $userobj = new User($user);
+        echo "Login Success ", $userobj->getUsername();
         Session::set('is_loggedin', true);
-        Session::set('session_user', $result);
+        Session::set('session_username', $result);
     } else {
-        echo "Login failed <br>";
+        echo "Login failed, $user <br>";
     }
 }
+
 echo <<<EOL
 <br><br><a href="logintest.php?logout">Logout</a>
 EOL;
+

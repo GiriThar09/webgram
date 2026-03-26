@@ -38,8 +38,7 @@ function validate_user($username,$password)
         
         if($username=="girithar@gmail.com" and $password=="password")
             {
-                print("login successsfull");
-                return true;
+                return "girithar";
             }
         else
             {

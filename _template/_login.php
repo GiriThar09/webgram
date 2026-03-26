@@ -3,17 +3,15 @@
     $username = $_POST['email_address'];
     $password = $_POST['password'];
 
-    $result =validate_user($username,$password);
+    $result = User::login($username,$password);
     if($result){
        ?>
 <main class="container">
     <div class="bg-light p-5 rounded mt-3">
         <h1>Login Success</h1>
         <p class="lead">This example is a quick exercise to do basic login with html forms.</p>
-        <?php
+        <a href="login.php?logout">Logout</a>
         
-        load_template('index.php');
-        ?>
     </div>
 </main>
 <?php
