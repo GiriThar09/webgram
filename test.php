@@ -1,5 +1,6 @@
 <pre>
 <?php
+/*
 include 'libs/load.php';
 
 echo "Testing database connection...<br>";
@@ -13,8 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `auth` (
     `password` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `phone` VARCHAR(255),
-    `active` INT DEFAULT 1,
-    `bio` TEXT
+    `active` INT DEFAULT 1
 )";
 if ($conn->query($sql) === TRUE) {
     echo "Table created or already exists.<br>";
@@ -50,6 +50,7 @@ if ($result) {
 } else {
     echo "Query failed: " . $conn->error . "<br>";
 }
-
+*/
+echo "Test script commented out.";
 ?>
 </pre>

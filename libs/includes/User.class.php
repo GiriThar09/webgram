@@ -15,6 +15,9 @@ class User
         } elseif (substr($name, 0, 3) == "set") {
             return $this->_set_data($property, $arguments[0]);
         }
+        else{
+            throw new Exception("Function does not exist");
+        }
     }
     
     public static function signup($user, $pass, $email, $phone)
@@ -22,7 +25,7 @@ class User
         $options = [
             'cost' => 9,
         ];
-        $pass = password_hash($pass, PASSWORD_BCRYPT, $options);
+        $pass = password_hash($pass, PASSWORD_BCRYPT, $options,);
         $conn = Database::getConnection();
         $sql = "INSERT INTO `auth` (`username`, `password`, `email`, `phone`)
         VALUES ('$user', '$pass', '$email', '$phone');";
@@ -62,7 +65,7 @@ class User
         $this->conn = Database::getConnection();
         $this->username = $username;
         $this->id = null;
-        $sql = "SELECT `id` FROM `auth` WHERE `username`= '$username' LIMIT 1";
+        $sql = "SELECT `id` FROM `auth` WHERE `username`= '$username' or 'id' = '$username' LIMIT 1";
         $result = $this->conn->query($sql);
         if ($result->num_rows) {
             $row = $result->fetch_assoc();
