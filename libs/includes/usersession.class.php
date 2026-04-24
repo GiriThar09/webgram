@@ -3,34 +3,33 @@ class usersession
 {
     public static function authenticate($username,$password)
     {
-        $username = User::login($username.$password);
-        $user = new User($username);
+        $username = User::login($username, $password);
         if($username)
+        {
+            $user = new User($username);
+            $conn = Database::getConnection();
+            $ip = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+            $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? 'cli';
+            $token = md5(rand(0,99999).$username.$ip.$user_agent);
+            $uid = property_exists($user, 'id') ? $user->id : ($user->uid ?? '0');
+                 $sql = "INSERT INTO session(uid,token,ip,user_agent,login_time,active) VALUES ('$uid','$token','$ip','$user_agent',now(),'1')";
+            if($conn->query($sql) === true)
             {
-                $conn = Database::getConnection();
-                $ip = $__SERVER['REMOTE_ADDR'];
-                $user_agent = $__SERVER['HTTP_USER_AGENT'];
-                $token = md5(rand(0,99999).$username.$ip.$user_agent);
-                $sql = "INSERT INTO 'sessions'('uid','token','ip','user_agent','login_time','active') 
-                VALUES ('$this-> id','$token','$ip','$user_agent',now(),'1')";
-                if($conn->query($sql)== true)
-                    {
-                        Session::set('token',$token);
-                        return $token;
-                    }
-                    else{
-                        return false;
-                    }
+                Session::set('token',$token);
+                return $token;
             }
             else{
                 return false;
-
-            }    
+            }
+        }
+        else{
+            return false;
+        }
     }
     public static function athurize($token)
     {
         $conn = Database::getConnection();
-        $sql = "SELECT * FROM `sessions` WHERE `token`='$token' AND `active`='1'";
+        $sql = "SELECT * FROM `session` WHERE `token`='$token' AND `active`='1'";
         $result = $conn->query($sql);
         if($result->num_rows == 1)
             {
@@ -43,11 +42,11 @@ class usersession
     }
     public function __construct($token)
     {
-    $conn = Database::getconnection();
+    $conn = Database::getConnection();
     $this->token = $token;
     $this->date = null;
-    $sql = "SELECT * FROM 'sessions' WHERE 'token'= '$token' LIMIT 1";
-    $restult = $conn->query($sql);
+    $sql = "SELECT * FROM `session` WHERE `token`= '$token' LIMIT 1";
+    $result = $conn->query($sql);
     if($result->num_rows)
         {
             $row = $result->fetch_assoc();
@@ -62,19 +61,19 @@ class usersession
     }    
     
     }
-    public static function getuser()
+    public function getuser()
     {
         return new User ($this->uid);
 
     }
-    public static function getip()
+    public function getip()
     {
         return $this->data['ip'];
     }
-    public static function isvalid()
+    public function isvalid()
     {
         $conn = Database::getConnection();
-        $sql = "SELECT * FROM 'sessions' WHERE 'token'='$this->token' AND 'active'='1'";
+        $sql = "SELECT * FROM `session` WHERE `token`='" . $this->token . "' AND `active`='1'";
         $result = $conn->query($sql);
         if($result->num_rows == 1)
             {
@@ -85,4 +84,5 @@ class usersession
                     return false;
                 }
     }
+    
 }

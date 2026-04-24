@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../load.php';
 class Database
 {
     public static $conn = null;   

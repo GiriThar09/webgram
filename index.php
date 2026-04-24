@@ -1,14 +1,11 @@
+
 <?php
 include 'libs/load.php';
-?>
-
-<?
 load_template('head.php');
 ?>
 
     <style>
-    
-
+      
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -81,6 +78,44 @@ load_template('head.php');
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+      /* Custom alignment for main sections */
+      header[data-bs-theme="dark"] {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #212529;
+        margin-bottom: 0;
+      }
+      main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 60vh;
+        padding: 0;
+      }
+      .album {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      footer.text-body-secondary {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f8f9fa;
+        margin-top: 2rem;
+        padding: 2rem 0 1rem 0;
+      }
     </style>
   </head>
   <body>
@@ -110,30 +145,20 @@ load_template('head.php');
       </symbol>
     </svg>
 
-    <?php load_template('theme_button.php') ?>
+    <?php load_template('theme_button.php'); ?>
 
     <header data-bs-theme="dark">
-
-     <?php load_template('header.php') ?>
-
+      <?php load_template('header.php'); ?>
     </header>
+
     <main>
-     <?php load_template('face.php') ?>
-      
-      <?php load_template('phtogram.php') ?>
-        
+      <?php load_template('face.php'); ?>
+      <?php load_template('phtogram.php'); ?>
     </main>
-    
 
     <footer class="text-body-secondary py-5">
-
-
-      <?php load_template('footer.php') ?>
-     
+      <?php load_template('footer.php'); ?>
     </footer>
-    <script
-      src="/app/assets/dist/js/bootstrap.bundle.min.js"
-      class="astro-vvvwv3sm"
-    ></script>
+    <script src="/app/assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -122,6 +122,18 @@ class User
 
     public function authenticate()
     {
+        $token = bin2hex(random_bytes(16));
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $conn = Database::getConnection();
+        $sql = "INSERT INTO `sessions` (`uid`, `token`, `ip`, `active`) VALUES ('$this->id', '$token', '$ip', '1')";
+        if($conn->query($sql)== true)
+            {
+                Session::set('token',$token);
+                return $token;
+            }
+            else{
+                return false;
+            }
     }
 
 }

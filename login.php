@@ -6,6 +6,7 @@ if (isset($_GET['logout'])) {
 }
 ?>
 <?
+load_template('header.php');
 load_template('head.php');
 ?>
 
@@ -115,4 +116,7 @@ load_template('head.php');
       class="astro-vvvwv3sm"
     ></script>
   </body>
+  <footer>
+    load_template('footer');
+  </footer>
 </html>
