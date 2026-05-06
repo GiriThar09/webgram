@@ -58,5 +58,6 @@ if ($session_token) {
 
 echo <<<EOL
 <br><br><a href="logintest.php?logout">Logout</a>
+<a href="login.php">go to login</a>
 EOL;
 

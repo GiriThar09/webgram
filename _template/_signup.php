@@ -18,7 +18,7 @@ if (isset($_POST['username']) and isset($_POST['password']) and isset($_POST['em
 <main class="container">
     <div class="bg-light p-5 rounded mt-3">
         <h1>Signup Success</h1>
-        <p class="lead">Now you can login from <a href="/login.php">here</a>.</p>
+        <p class="lead">Now you can login  the from <a href="login.php">here</a>.</p>
 
     </div>
 </main>

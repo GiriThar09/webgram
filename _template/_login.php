@@ -30,6 +30,7 @@ else {
           width="72"
           height="70"
         />
+          <input name="fingerprint" type="hidden" id="fingerprint" value="">
         <h1 class="h3 mb-3 fw-normal"><b>log in </b></h1>
         <div class="form-floating">
           <input

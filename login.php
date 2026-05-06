@@ -11,7 +11,7 @@ load_template('head.php');
 ?>
 
   </head>
-  <link rel="stylesheet" href="/app/css/login.css">
+  <link rel="stylesheet" href="app/css/login.css">
   <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
@@ -112,11 +112,11 @@ load_template('head.php');
     load_template('_login.php')
     ?>
     <script
-      src="/app/assets/dist/js/bootstrap.bundle.min.js"
+      src="app/assets/dist/js/bootstrap.bundle.min.js"
       class="astro-vvvwv3sm"
     ></script>
   </body>
   <footer>
-    load_template('footer');
+    <?php load_template('footer'); ?>
   </footer>
 </html>

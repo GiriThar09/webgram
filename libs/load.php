@@ -28,7 +28,7 @@ function get_config($key)
 
 function load_template($name)
 {
-    include $_SERVER['DOCUMENT_ROOT'] .  "/app/_template/$name"; //not consistant
+    include $_SERVER['DOCUMENT_ROOT'] . get_config('base_path') ."_template/$name"; //not consistant
 }
 ?>
 

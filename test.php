@@ -54,6 +54,7 @@ if ($result) {
 echo "Test script commented out.";
 $_SERVER['DOCUMENT_ROOT'] = __DIR__; // Set document root for testing
 print_r("Document root set to: " . $_SERVER['DOCUMENT_ROOT'] . "<br>");
-// include 'libs/load.php';
+
+
 ?>
 </pre>

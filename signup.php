@@ -108,7 +108,7 @@ load_template('head.php');
     load_template('_signup.php')
     ?>
     <script
-      src="/app/assets/dist/js/bootstrap.bundle.min.js"
+      src="/assets/dist/js/bootstrap.bundle.min.js"
       class="astro-vvvwv3sm"
     ></script>
   </body>
