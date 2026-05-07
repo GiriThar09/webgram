@@ -112,7 +112,8 @@ load_template('head.php');
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #f8f9fa;
+        background: var(--bs-body-bg);
+        color: var(--bs-body-color);
         margin-top: 2rem;
         padding: 2rem 0 1rem 0;
       }

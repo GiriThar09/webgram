@@ -13,14 +13,15 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4>Contact</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on X</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
+                <li><a href="https://www.instagram.com/girithar_ff_/" class="text-white">Follow on Instagram</a></li>
+                <li><a href="https://wa.me/+919629185073" class="text-white">Whatsapp</a></li>
+                <li><a href="mailto:girithar09@gmail.com" class="text-white">Email me</a></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+      <?php if (basename($_SERVER['PHP_SELF']) != 'login.php') { ?>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
           <a href="#" class="navbar-brand d-flex align-items-center">
@@ -37,7 +38,7 @@
               class="me-2"
               viewBox="0 0 24 24"
             >
-      git remote add origin git@github.com:GiriThar09/webgram.git        <path
+              <path
                 d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
               ></path>
               <circle cx="12" cy="13" r="4"></circle>
@@ -57,3 +58,4 @@
           </button>
         </div>
       </div>
+      <?php } ?>

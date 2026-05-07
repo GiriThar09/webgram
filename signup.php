@@ -2,13 +2,12 @@
 
 include 'libs/load.php';
 ?>
-<?
+<?php
 load_template('head.php');
 ?>
-
-  </head>
-  <link rel="stylesheet" href="/app/css/signup.css">
-  <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
+  <body class="d-flex flex-column min-vh-100 bg-body-tertiary">
+    <?php load_template('theme_button.php'); ?>
+    <?php load_template('header.php'); ?>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path
@@ -107,8 +106,11 @@ load_template('head.php');
     <?php
     load_template('_signup.php')
     ?>
+    <footer class="mt-auto">
+      <?php load_template('footer.php'); ?>
+    </footer>
     <script
-      src="/assets/dist/js/bootstrap.bundle.min.js"
+      src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"
       class="astro-vvvwv3sm"
     ></script>
   </body>

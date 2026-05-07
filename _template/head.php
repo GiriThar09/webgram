@@ -8,6 +8,7 @@
     <!-- Bootstrap core CSS -->
     <link href="<?=get_config('base_path')?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="<?=get_config('base_path')?>assets/js/color-modes.js"></script>
     <script>
     // Initialize the agent at application startup.
     const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')

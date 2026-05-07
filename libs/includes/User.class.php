@@ -41,22 +41,19 @@ class User
         return $error;
     }
 
-    public static function login($user, $pass)
+    public static function login($email, $pass)
     {
-        $query = "SELECT * FROM `auth` WHERE `username` = '$user'";
         $conn = Database::getConnection();
+        $email = $conn->real_escape_string($email);
+        $query = "SELECT * FROM `auth` WHERE `email` = '$email' LIMIT 1";
         $result = $conn->query($query);
-        if ($result->num_rows == 1) {
+        if ($result && $result->num_rows === 1) {
             $row = $result->fetch_assoc();
-            //if ($row['password'] == $pass) {
             if (password_verify($pass, $row['password'])) {
-                return $row['username'];
-            } else {
-                return false;
+                return $row;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     public function __construct($username)

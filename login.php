@@ -1,18 +1,47 @@
 <?php
 include 'libs/load.php';
+$loginError = '';
+$signupSuccess = isset($_GET['signup']) && $_GET['signup'] === 'success';
+
+if (Session::isset('user')) {
+    header('Location: index.php');
+    exit;
+}
+
 if (isset($_GET['logout'])) {
     Session::destroy();
-    die("Session destroyed, <a href='login.php'>Login Again</a>");
+    header('Location: login.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email_address'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if ($email === '' || $password === '') {
+        $loginError = 'Please fill in both email and password.';
+    } else {
+        $user = User::login($email, $password);
+        if ($user) {
+            Session::set('user', $user['username']);
+            Session::set('user_id', $user['id']);
+            header('Location: index.php');
+            exit;
+        } else {
+            $loginError = 'User not found or password incorrect. Please sign up.';
+        }
+    }
 }
 ?>
-<?
-load_template('header.php');
+<!DOCTYPE html>
+<html lang="en">
+<?php
 load_template('head.php');
 ?>
-
-  </head>
-  <link rel="stylesheet" href="app/css/login.css">
-  <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary">
+  <body class="d-flex flex-column min-vh-100 bg-body-tertiary">
+    <?php load_template('theme_button.php'); ?>
+    <?php load_template('header.php'); ?>
+    
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path
@@ -108,15 +137,21 @@ load_template('head.php');
         </li>
       </ul>
     </div>
-    <?php
-    load_template('_login.php')
-    ?>
+    <?php if ($signupSuccess): ?>
+      <script>alert('Signup completed successfully. Please log in.');</script>
+    <?php endif; ?>
+    <?php if (!empty($loginError)): ?>
+      <script>alert('<?= addslashes($loginError) ?>');</script>
+    <?php endif; ?>
+    <main class="container d-flex flex-grow-1 justify-content-center align-items-center py-5">
+      <?php load_template('_login.php'); ?>
+    </main>
+    <footer class="mt-auto">
+      <?php load_template('footer.php'); ?>
+    </footer>
     <script
-      src="app/assets/dist/js/bootstrap.bundle.min.js"
+      src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"
       class="astro-vvvwv3sm"
     ></script>
   </body>
-  <footer>
-    <?php load_template('footer'); ?>
-  </footer>
 </html>
