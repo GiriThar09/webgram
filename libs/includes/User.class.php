@@ -22,22 +22,44 @@ class User
     
     public static function signup($user, $pass, $email, $phone)
     {
-        $options = [
-            'cost' => 9,
-        ];
-        $pass = password_hash($pass, PASSWORD_BCRYPT, $options,);
-        $conn = Database::getConnection();
-        $sql = "INSERT INTO `auth` (`username`, `password`, `email`, `phone`)
-        VALUES ('$user', '$pass', '$email', '$phone');";
-        $error = false;
-        if ($conn->query($sql) === true) {
-            $error = false;
-        } else {
-            // echo "Error: " . $sql . "<br>" . $conn->error;
-            $error = $conn->error;
+        $username = trim($user);
+        $email = trim($email);
+        $phone = trim($phone);
+        $password = trim($pass);
+
+        if ($username === '' || $email === '' || $password === '') {
+            return 'Username, email and password are required.';
         }
 
-        // $conn->close();
+        $conn = Database::getConnection();
+        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM `auth` WHERE `email` = ? OR `username` = ?");
+        if (!$stmt) {
+            return $conn->error;
+        }
+        $stmt->bind_param('ss', $email, $username);
+        $stmt->execute();
+        $stmt->bind_result($userCount);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($userCount > 0) {
+            return 'A user with that email or username already exists.';
+        }
+
+        $options = ['cost' => 9];
+        $passwordHash = password_hash($password, PASSWORD_BCRYPT, $options);
+        $stmt = $conn->prepare("INSERT INTO `auth` (`username`, `password`, `email`, `phone`) VALUES (?, ?, ?, ?)");
+        if (!$stmt) {
+            return $conn->error;
+        }
+        $stmt->bind_param('ssss', $username, $passwordHash, $email, $phone);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        }
+
+        $error = $stmt->error ?: $conn->error;
+        $stmt->close();
         return $error;
     }
 
@@ -58,18 +80,24 @@ class User
 
     public function __construct($username)
     {
-        //TODO: Write the code to fetch user data from Database for the given username. If username is not present, throw Exception.
         $this->conn = Database::getConnection();
         $this->username = $username;
         $this->id = null;
-        $sql = "SELECT `id` FROM `auth` WHERE `username`= '$username' or 'id' = '$username' LIMIT 1";
-        $result = $this->conn->query($sql);
-        if ($result->num_rows) {
-            $row = $result->fetch_assoc();
-            $this->id = $row['id']; //Updating this from database
-        } else {
-            throw new Exception("Username does't exist");
+        $sql = "SELECT `id` FROM `auth` WHERE `username` = ? OR `id` = ? LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception('Unable to prepare user lookup: ' . $this->conn->error);
         }
+        $stmt->bind_param('ss', $username, $username);
+        $stmt->execute();
+        $stmt->bind_result($id);
+        if ($stmt->fetch()) {
+            $this->id = $id;
+            $stmt->close();
+            return;
+        }
+        $stmt->close();
+        throw new Exception("Username doesn't exist");
     }
 
     //this function helps to retrieve data from the database

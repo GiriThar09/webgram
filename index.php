@@ -1,7 +1,12 @@
-
 <?php
 include 'libs/load.php';
+if (!Session::isset('user')) {
+    header('Location: login.php');
+    exit;
+}
 load_template('head.php');
+isset($_GET['logout']) && Session::delete('user');
+
 ?>
 
     <style>
@@ -151,6 +156,10 @@ load_template('head.php');
     <header data-bs-theme="dark">
       <?php load_template('header.php'); ?>
     </header>
+
+    <div class="container mt-3 text-end">
+      <a href="login.php?logout" class="btn btn-outline-light">Logout</a>
+    </div>
 
     <main>
       <?php load_template('face.php'); ?>
