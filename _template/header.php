@@ -21,7 +21,6 @@
           </div>
         </div>
       </div>
-      <?php if (basename($_SERVER['PHP_SELF']) != 'login.php') { ?>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
           <a href="#" class="navbar-brand d-flex align-items-center">
@@ -58,4 +57,3 @@
           </button>
         </div>
       </div>
-      <?php } ?>

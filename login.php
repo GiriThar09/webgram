@@ -3,14 +3,14 @@ include 'libs/load.php';
 $loginError = '';
 $signupSuccess = isset($_GET['signup']) && $_GET['signup'] === 'success';
 
-if (Session::isset('user')) {
-    header('Location: index.php');
-    exit;
-}
-
 if (isset($_GET['logout'])) {
     Session::destroy();
     header('Location: login.php');
+    exit;
+}
+
+if (Session::isset('user')) {
+    header('Location: index.php');
     exit;
 }
 
@@ -35,8 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <?php
 load_template('head.php');
+
 ?>
   <body class="d-flex flex-column min-vh-100 bg-body-tertiary">
     <?php load_template('theme_button.php'); ?>
