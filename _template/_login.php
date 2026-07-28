@@ -35,7 +35,7 @@
         placeholder="Password"
         required
       />
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">Password </label>
     </div>
 
     <div class="form-check text-start mb-3">
