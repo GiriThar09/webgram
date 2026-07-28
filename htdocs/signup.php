@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/libs/load.php';
+include 'libs/load.php';
 $signupError = '';
 
 if (Session::isset('user')) {

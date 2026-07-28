@@ -1,3 +1,4 @@
+<pre>
 <?php
 /*
 include 'libs/load.php';
@@ -50,8 +51,10 @@ if ($result) {
     echo "Query failed: " . $conn->error . "<br>";
 }
 */
-//print the $__site_config variable to check if it is being loaded correctly
-echo $__site_config = file_get_contents(__DIR__ . '/../../database_keys.json');
+echo "Test script commented out.";
+$_SERVER['DOCUMENT_ROOT'] = __DIR__; // Set document root for testing
+print_r("Document root set to: " . $_SERVER['DOCUMENT_ROOT'] . "<br>");
 
 
 ?>
+</pre>

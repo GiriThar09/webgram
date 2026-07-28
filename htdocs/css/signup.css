@@ -27,38 +27,46 @@ main {
 }
 
 
+.form-signup .form-floating:focus-within {
+  z-index: 2;
+}
+
 .form-signup .form-floating {
   margin-bottom: 0 !important;
 }
 
-.form-signup .form-floating.mb-2 {
-  margin-bottom: 0 !important;
-}
-
-.form-signup .form-floating.mb-3 {
-  margin-bottom: 0 !important;
+.form-signup .form-floating:last-of-type {
+  margin-bottom: 10px !important;
 }
 
 .form-signup input[type="email"] {
-  margin-bottom: 0px;
-  border-radius: 4pX;
+  margin-bottom: -1px;
+  /* border-top-left-radius: 0;
+  border-top-right-radius: 0;  */
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+
 
 }
-
 .form-signup input[type="password"] {
-  margin-bottom: 0px;
-  border-radius: 4px;
-}
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; 
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 
+}   
 .form-signup input[name="user_name"] {
-  margin-bottom: 0px;
-  border-radius: 4px;
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; 
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
-
 .form-signup input[name="phone"] {
-  margin-bottom: 0;
-  border-radius: 4px;
-  
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
     .bd-placeholder-img {
@@ -134,21 +142,8 @@ main {
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
-       .mb-4{
-        border: 2px solid #000000;
-        alt: "logo";
-        width: 90px;
-        height: 90px;
-      }
-
-      h1 {
-        font-weight: bold !important;
-      }
-
-      label {
-        font-weight: bold;
-      }
-
-      .alert {
-        font-weight: bold;
+     
+      .form-signup img.mb-4 {
+        border: 3px solid #000;
+        border-radius: 50%;
       }

@@ -1,7 +1,5 @@
 <?php
 
-require_once "Database.class.php";
-
 class User
 {
     private $conn;
@@ -71,17 +69,7 @@ class User
         $result = $conn->query($query);
         if ($result && $result->num_rows === 1) {
             $row = $result->fetch_assoc();
-            $storedPassword = $row['password'] ?? '';
-
-            if ($storedPassword !== '' && password_verify($pass, $storedPassword)) {
-                return $row;
-            }
-
-            if ($storedPassword !== '' && $storedPassword === $pass) {
-                return $row;
-            }
-
-            if (isset($row['pass']) && $row['pass'] === $pass) {
+            if (password_verify($pass, $row['password'])) {
                 return $row;
             }
         }
