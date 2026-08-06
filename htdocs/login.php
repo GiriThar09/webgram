@@ -151,9 +151,6 @@ load_template('head.php');
     <footer class="mt-auto">
       <?php load_template('footer.php'); ?>
     </footer>
-    <script
-      src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"
-      class="astro-vvvwv3sm"
-    ></script>
+     <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

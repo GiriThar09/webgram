@@ -1,133 +1,15 @@
 <?php
-include 'libs/load.php';
+require_once __DIR__ . '/libs/load.php';
 if (!Session::isset('user')) {
     header('Location: login.php');
     exit;
 }
-if (isset($_GET['logout'])) {
-    Session::delete('user');
-    header('Location: login.php');
-    exit;
-}
-load_template('head.php');
+isset($_GET['logout']) && Session::delete('user');
 
 ?>
-
-    <style>
-      
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: #0000001a;
-        border: solid rgba(0, 0, 0, 0.15);
-        border-width: 1px 0;
-        box-shadow:
-          inset 0 0.5em 1.5em #0000001a,
-          inset 0 0.125em 0.5em #00000026;
-      }
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-      .bi {
-        vertical-align: -0.125em;
-        fill: currentColor;
-      }
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
-      }
-      .bd-mode-toggle {
-        z-index: 1500;
-      }
-      .bd-mode-toggle .bi {
-        width: 1em;
-        height: 1em;
-      }
-      .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
-      }
-
-      /* Custom alignment for main sections */
-      header[data-bs-theme="dark"] {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #212529;
-        margin-bottom: 0;
-      }
-      main {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 60vh;
-        padding: 0;
-      }
-      .album {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .container {
-        max-width: 960px;
-        margin: 0 auto;
-      }
-      footer.text-body-secondary {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--bs-body-bg);
-        color: var(--bs-body-color);
-        margin-top: 2rem;
-        padding: 2rem 0 1rem 0;
-      }
-    </style>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<?php load_template('head.php'); ?>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
@@ -173,6 +55,5 @@ load_template('head.php');
     <footer class="text-body-secondary py-5">
       <?php load_template('footer.php'); ?>
     </footer>
-    <script src="<?=get_config('base_path')?>assets/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
 </html>

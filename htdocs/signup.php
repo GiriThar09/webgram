@@ -1,5 +1,5 @@
 <?php
-include 'libs/load.php';
+require_once __DIR__ . '/libs/load.php';
 $signupError = '';
 
 if (Session::isset('user')) {
@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer class="mt-auto">
       <?php load_template('footer.php'); ?>
     </footer>
-    <script src="<?= get_config('base_path') ?>assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

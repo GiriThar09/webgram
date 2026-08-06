@@ -6,9 +6,14 @@
     <meta name="generator" content="Hugo 0.88.1">
     <title>webgram</title>
     <!-- Bootstrap core CSS -->
-    <link href="<?=get_config('base_path')?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <?php $base_path = get_config('base_path', '/');
+    if (!$base_path) { $base_path = '/'; }
+    if (substr($base_path, 0, 1) !== '/') { $base_path = '/' . $base_path; }
+    if (substr($base_path, -1) !== '/') { $base_path .= '/'; }
+    ?>
+    <link href="<?= htmlspecialchars($base_path) ?>assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="<?=get_config('base_path')?>assets/js/color-modes.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>assets/js/color-modes.js"></script>
     <script>
     // Initialize the agent at application startup.
     const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
@@ -27,11 +32,11 @@
 
     <?php
     $page_css = basename($_SERVER['PHP_SELF'], '.php') . '.css';
-    $css_path = $_SERVER['DOCUMENT_ROOT'] . get_config('base_path', '') . 'css/' . $page_css;
+    $app_root_css_path = dirname(__DIR__) . '/css/' . $page_css;
 
-    if (!file_exists($css_path)) {
+    if (!file_exists($app_root_css_path)) {
         $page_css = 'main.css';
     }
     ?>
-    <link href="<?= get_config('base_path', '') ?>css/<?= $page_css ?>" rel="stylesheet">
+    <link href="<?= htmlspecialchars($base_path) ?>css/<?= htmlspecialchars($page_css) ?>" rel="stylesheet">
 </head>

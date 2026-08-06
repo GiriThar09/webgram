@@ -1,0 +1,8 @@
+{
+"db_server":"mysql.selfmade.ninja:3306",
+"db_username":"girithar_ff_",
+"db_password":"sri9629185073",
+"db_name":"girithar_ff__webgram",
+"base_path":"/webgram/htdocs/"
+
+}

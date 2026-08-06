@@ -9,9 +9,9 @@
           width="72"
           height="70"
         />
-        <h1 class="h3 mb-3 fw-normal text-center"><b>Please sign up</b></h1>
+        <h1 class="h3 mb-3 fw-normal text-center"><b>sign up</b></h1>
 
-        <div class="form-floating">
+        <div class="form-floating mb-2">
           <input
             type="email"
             class="form-control"
@@ -23,7 +23,7 @@
           <label for="floatingInput">Email address</label>
         </div>
 
-        <div class="form-floating">
+        <div class="form-floating mb-2">
           <input
             type="password"
             class="form-control"
@@ -35,7 +35,7 @@
           <label for="floatingPassword">Password</label>
         </div>
 
-        <div class="form-floating">
+        <div class="form-floating mb-2">
           <input
             type="text"
             class="form-control"
