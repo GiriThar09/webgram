@@ -76,10 +76,21 @@
       header[data-bs-theme="dark"] {
         width: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         background: #212529;
         margin-bottom: 0;
+      }
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .navbar-brand .h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
       }
       main {
         width: 100%;
@@ -110,3 +121,5 @@
         margin-top: 2rem;
         padding: 2rem 0 1rem 0;
       }
+      
+        

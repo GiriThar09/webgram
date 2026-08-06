@@ -38,13 +38,14 @@ isset($_GET['logout']) && Session::delete('user');
     </svg>
 
     <?php load_template('theme_button.php'); ?>
+    <?php load_template('header.php'); ?>
 
-    <header data-bs-theme="dark">
+    <!-- <header data-bs-theme="dark">
       <?php load_template('header.php'); ?>
-    </header>
+    </header> -->
 
     <div class="container mt-3 text-end">
-      <a href="login.php?logout" class="btn btn-outline-light">Logout</a>
+      <a href="login.php?logout" class="btn btn-primary my-2">Logout</a>
     </div>
 
     <main>

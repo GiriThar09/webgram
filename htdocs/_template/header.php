@@ -23,7 +23,7 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="#" class="navbar-brand d-flex align-items-center me-auto text-white text-decoration-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -42,9 +42,11 @@
               ></path>
               <circle cx="12" cy="13" r="4"></circle>
             </svg>
-            <strong>Album</strong>
+
+            <span class="h3 mb-0 fw-bold text-white">Album</span>
           </a>
           <button
+          
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
