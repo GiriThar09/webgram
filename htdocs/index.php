@@ -6,6 +6,7 @@ if (!Session::isset('user')) {
 }
 isset($_GET['logout']) && Session::delete('user');
 
+// GIIRTHAR
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +41,6 @@ isset($_GET['logout']) && Session::delete('user');
     <?php load_template('theme_button.php'); ?>
     <?php load_template('header.php'); ?>
 
-    <!-- <header data-bs-theme="dark">
-      <?php load_template('header.php'); ?>
-    </header> -->
-
     <div class="container mt-3 text-end">
       <a href="login.php?logout" class="btn btn-primary my-2">Logout</a>
     </div>
@@ -56,5 +53,7 @@ isset($_GET['logout']) && Session::delete('user');
     <footer class="text-body-secondary py-5">
       <?php load_template('footer.php'); ?>
     </footer>
-  <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>assets/js/navbar-toggle.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>htdocs/assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -41,6 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer class="mt-auto">
       <?php load_template('footer.php'); ?>
     </footer>
-    <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>htdocs/assets/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
