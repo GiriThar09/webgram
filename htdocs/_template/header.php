@@ -3,7 +3,7 @@
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
               <h4>About</h4>
-              <p class="text-body-secondary">
+              <p class="text-white-50">
                 Add some information about the album below, the author, or any
                 other background context. Make it a few sentences long so folks
                 can pick up some informative tidbits. Then, link them off to

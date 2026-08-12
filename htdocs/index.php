@@ -53,7 +53,6 @@ isset($_GET['logout']) && Session::delete('user');
     <footer class="text-body-secondary py-5">
       <?php load_template('footer.php'); ?>
     </footer>
-    <script src="<?= htmlspecialchars($base_path) ?>assets/js/navbar-toggle.js"></script>
-    <script src="<?= htmlspecialchars($base_path) ?>htdocs/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= htmlspecialchars($base_path) ?>assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
